@@ -27,7 +27,7 @@ export default function ActivityList({ activities, selectActivity, deleteActivit
                             <Item.Meta>{activity.date}</Item.Meta>
                             <Item.Description>
                                 <div>{activity.description}</div>
-                                <div>{activity.city}, {activity.venue}</div>
+                                <div>{activity.location}, {activity.venue}</div>
                             </Item.Description>
                             <Item.Extra>
                                 <Button onClick={() => selectActivity(activity.id)} floated='right' content='View' color='blue' />
