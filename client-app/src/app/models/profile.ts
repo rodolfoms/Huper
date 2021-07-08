@@ -10,7 +10,6 @@ export interface Profile {
     followingCount: number;
     following: boolean;
 }
-
 export class Profile implements Profile {
     constructor(user: User) {
         this.username = user.username;
@@ -18,9 +17,14 @@ export class Profile implements Profile {
         this.image = user.image;
     }
 }
-
 export interface Photo {
     id: string;
     url: string;
     isMain: boolean;
+}
+export interface UserActivity {
+    id: string;
+    title: string;
+    category: string;
+    date: Date;
 }
