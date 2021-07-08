@@ -7,11 +7,6 @@ namespace Persistence.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "City",
-                table: "Activities",
-                newName: "Location");
-
             migrationBuilder.AddColumn<bool>(
                 name: "IsCancelled",
                 table: "Activities",
@@ -59,10 +54,6 @@ namespace Persistence.Migrations
                 name: "IsCancelled",
                 table: "Activities");
 
-            migrationBuilder.RenameColumn(
-                name: "Location",
-                table: "Activities",
-                newName: "City");
         }
     }
 }
