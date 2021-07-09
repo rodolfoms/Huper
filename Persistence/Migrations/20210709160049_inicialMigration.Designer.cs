@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210709150515_iPostgre")]
-    partial class iPostgre
+    [Migration("20210709160049_inicialMigration")]
+    partial class inicialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
