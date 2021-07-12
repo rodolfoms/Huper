@@ -157,26 +157,27 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> FacebookLogin(string accessToken)
         {
             var fbVerifyKeys = _config["Facebook:AppId"] + "|" + _config["Facebook:AppSecret"];
+
             var verifyToken = await _httpClient
                 .GetAsync($"debug_token?input_token={accessToken}&access_token={fbVerifyKeys}");
-            if (!verifyToken.IsSuccessStatusCode) 
-            {
-                return Unauthorized();
-            }
+
+            if (!verifyToken.IsSuccessStatusCode) return Unauthorized();
+
             var fbUrl = $"me?access_token={accessToken}&fields=name,email,picture.width(100).height(100)";
+
             var response = await _httpClient.GetAsync(fbUrl);
-            if (!response.IsSuccessStatusCode) 
-            {
-                return Unauthorized();
-            }
+
+            if (!response.IsSuccessStatusCode) return Unauthorized();
+
             var fbInfo = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+
             var username = (string)fbInfo.id;
+
             var user = await _userManager.Users.Include(p => p.Photos)
                 .FirstOrDefaultAsync(x => x.UserName == username);
-            if (user != null) 
-            {
-                return CreateUserObject(user);
-            }
+
+            if (user != null) return CreateUserObject(user);
+
             user = new AppUser
             {
                 DisplayName = (string)fbInfo.name,
@@ -191,12 +192,13 @@ namespace API.Controllers
                     IsMain = true
                 }}
             };
+
             user.EmailConfirmed = true;
+
             var result = await _userManager.CreateAsync(user);
-            if (!result.Succeeded) 
-            {
-                return BadRequest("Problem creating user account");
-            }
+
+            if (!result.Succeeded) return BadRequest("Problem creating user account");
+
             await SetRefreshToken(user);
             return CreateUserObject(user);
         }
@@ -210,28 +212,29 @@ namespace API.Controllers
                 .Include(r => r.RefreshTokens)
                 .Include(p => p.Photos)
                 .FirstOrDefaultAsync(x => x.UserName == User.FindFirstValue(ClaimTypes.Name));
-            if (user == null) 
-            {
-                return Unauthorized();
-            }
+
+            if (user == null) return Unauthorized();
+
             var oldToken = user.RefreshTokens.SingleOrDefault(x => x.Token == refreshToken);
-            if (oldToken != null && !oldToken.IsActive) 
-            {
-                return Unauthorized();
-            }
+
+            if (oldToken != null && !oldToken.IsActive) return Unauthorized();
+
             return CreateUserObject(user);
         }
 
         private async Task SetRefreshToken(AppUser user)
         {
             var refreshToken = _tokenService.GenerateRefreshToken();
+
             user.RefreshTokens.Add(refreshToken);
             await _userManager.UpdateAsync(user);
+
             var cookieOptions = new CookieOptions
             {
                 HttpOnly = true,
                 Expires = DateTime.UtcNow.AddDays(7)
             };
+
             Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
         }
 
