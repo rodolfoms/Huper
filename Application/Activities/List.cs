@@ -6,7 +6,6 @@ using Application.Core;
 using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -35,11 +34,11 @@ namespace Application.Activities
             public async Task<Result<PagedList<ActivityDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var query = _context.Activities
-                   .Where(d => d.Date >= request.Params.StartDate)
-                   .OrderBy(d => d.Date)
-                   .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider,
-                       new { currentUsername = _userAccessor.GetUsername() })
-                   .AsQueryable();
+                    .Where(d => d.Date >= request.Params.StartDate)
+                    .OrderBy(d => d.Date)
+                    .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider,
+                        new { currentUsername = _userAccessor.GetUsername() })
+                    .AsQueryable();
 
                 if (request.Params.IsGoing && !request.Params.IsHost)
                 {

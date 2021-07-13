@@ -1,9 +1,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Core;
 using MediatR;
 using Persistence;
-using Application.Core;
 
 namespace Application.Activities
 {
@@ -25,6 +25,8 @@ namespace Application.Activities
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
                 var activity = await _context.Activities.FindAsync(request.Id);
+
+                // if (activity == null) return null;
 
                 _context.Remove(activity);
 

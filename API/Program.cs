@@ -21,7 +21,7 @@ namespace API
 
             var services = scope.ServiceProvider;
 
-            try
+            try 
             {
                 var context = services.GetRequiredService<DataContext>();
                 var userManager = services.GetRequiredService<UserManager<AppUser>>();
@@ -31,7 +31,7 @@ namespace API
             catch (Exception ex)
             {
                 var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "Migration-Error");
+                logger.LogError(ex, "An error occured during migraiton");
             }
 
             await host.RunAsync();

@@ -9,7 +9,8 @@ namespace Persistence
 {
     public class Seed
     {
-        public static async Task SeedData(DataContext context, UserManager<AppUser> userManager)
+        public static async Task SeedData(DataContext context,
+            UserManager<AppUser> userManager)
         {
             if (!userManager.Users.Any() && !context.Activities.Any())
             {
@@ -48,7 +49,7 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(-2),
                         Description = "Activity 2 months ago",
                         Category = "drinks",
-                        Location = "London",
+                        City = "London",
                         Venue = "Pub",
                         Attendees = new List<ActivityAttendee>
                         {
@@ -65,7 +66,7 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(-1),
                         Description = "Activity 1 month ago",
                         Category = "culture",
-                        Location = "Paris",
+                        City = "Paris",
                         Venue = "The Louvre",
                         Attendees = new List<ActivityAttendee>
                         {
@@ -87,7 +88,7 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(1),
                         Description = "Activity 1 month in future",
                         Category = "music",
-                        Location = "London",
+                        City = "London",
                         Venue = "Wembly Stadium",
                         Attendees = new List<ActivityAttendee>
                         {
@@ -109,7 +110,7 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(2),
                         Description = "Activity 2 months in future",
                         Category = "food",
-                        Location = "London",
+                        City = "London",
                         Venue = "Jamies Italian",
                         Attendees = new List<ActivityAttendee>
                         {
@@ -131,19 +132,19 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(3),
                         Description = "Activity 3 months in future",
                         Category = "drinks",
-                        Location = "London",
+                        City = "London",
                         Venue = "Pub",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[1],
-                                IsHost = true
+                                IsHost = true                            
                             },
                             new ActivityAttendee
                             {
                                 AppUser = users[0],
-                                IsHost = false
+                                IsHost = false                            
                             },
                         }
                     },
@@ -153,14 +154,14 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(4),
                         Description = "Activity 4 months in future",
                         Category = "culture",
-                        Location = "London",
+                        City = "London",
                         Venue = "British Museum",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[1],
-                                IsHost = true
+                                IsHost = true                            
                             }
                         }
                     },
@@ -170,19 +171,19 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(5),
                         Description = "Activity 5 months in future",
                         Category = "drinks",
-                        Location = "London",
+                        City = "London",
                         Venue = "Punch and Judy",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[0],
-                                IsHost = true
+                                IsHost = true                            
                             },
                             new ActivityAttendee
                             {
                                 AppUser = users[1],
-                                IsHost = false
+                                IsHost = false                            
                             },
                         }
                     },
@@ -192,19 +193,19 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(6),
                         Description = "Activity 6 months in future",
                         Category = "music",
-                        Location = "London",
+                        City = "London",
                         Venue = "O2 Arena",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[2],
-                                IsHost = true
+                                IsHost = true                            
                             },
                             new ActivityAttendee
                             {
                                 AppUser = users[1],
-                                IsHost = false
+                                IsHost = false                            
                             },
                         }
                     },
@@ -214,19 +215,19 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(7),
                         Description = "Activity 7 months in future",
                         Category = "travel",
-                        Location = "Berlin",
+                        City = "Berlin",
                         Venue = "All",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[0],
-                                IsHost = true
+                                IsHost = true                            
                             },
                             new ActivityAttendee
                             {
                                 AppUser = users[2],
-                                IsHost = false
+                                IsHost = false                            
                             },
                         }
                     },
@@ -236,19 +237,19 @@ namespace Persistence
                         Date = DateTime.Now.AddMonths(8),
                         Description = "Activity 8 months in future",
                         Category = "drinks",
-                        Location = "London",
+                        City = "London",
                         Venue = "Pub",
                         Attendees = new List<ActivityAttendee>
                         {
                             new ActivityAttendee
                             {
                                 AppUser = users[2],
-                                IsHost = true
+                                IsHost = true                            
                             },
                             new ActivityAttendee
                             {
                                 AppUser = users[1],
-                                IsHost = false
+                                IsHost = false                            
                             },
                         }
                     }

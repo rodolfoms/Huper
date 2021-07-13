@@ -22,6 +22,7 @@ export default observer(function ActivityDetailedChat({ activityId }: Props) {
             commentStore.clearComments();
         }
     }, [commentStore, activityId]);
+
     return (
         <>
             <Segment

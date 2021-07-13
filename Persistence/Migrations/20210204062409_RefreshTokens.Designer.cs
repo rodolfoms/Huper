@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210712171046_inicialMigration")]
-    partial class inicialMigration
+    [Migration("20210204062409_RefreshTokens")]
+    partial class RefreshTokens
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace Persistence.Migrations
             modelBuilder
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Domain.Activity", b =>
                 {
@@ -30,6 +30,9 @@ namespace Persistence.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("text");
 
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
 
@@ -38,9 +41,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsCancelled")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

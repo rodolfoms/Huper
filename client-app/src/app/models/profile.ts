@@ -4,12 +4,13 @@ export interface Profile {
     username: string;
     displayName: string;
     image?: string;
-    bio?: string;
-    photos?: Photo[];
     followersCount: number;
     followingCount: number;
     following: boolean;
+    bio?: string;
+    photos?: Photo[];
 }
+
 export class Profile implements Profile {
     constructor(user: User) {
         this.username = user.username;
@@ -17,11 +18,13 @@ export class Profile implements Profile {
         this.image = user.image;
     }
 }
+
 export interface Photo {
     id: string;
     url: string;
     isMain: boolean;
 }
+
 export interface UserActivity {
     id: string;
     title: string;

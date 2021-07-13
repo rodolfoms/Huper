@@ -8,7 +8,7 @@ interface Props {
     profile: Profile;
 }
 
-export default observer(function ProfileHeader({ profile }: Props) {
+export default observer(function ProfileHeader({profile}: Props) {
     return (
         <Segment>
             <Grid>

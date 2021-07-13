@@ -17,7 +17,7 @@ namespace Persistence.Migrations
             modelBuilder
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Domain.Activity", b =>
                 {
@@ -28,6 +28,9 @@ namespace Persistence.Migrations
                     b.Property<string>("Category")
                         .HasColumnType("text");
 
+                    b.Property<string>("City")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("timestamp without time zone");
 
@@ -36,9 +39,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsCancelled")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .HasColumnType("text");

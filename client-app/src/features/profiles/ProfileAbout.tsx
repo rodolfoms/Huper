@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useStore } from "../../app/stores/store";
-import { Button, Grid, Header, Tab } from "semantic-ui-react";
+import React, {useState} from 'react';
+import {useStore} from "../../app/stores/store";
+import {Button, Grid, Header, Tab} from "semantic-ui-react";
 import ProfileEditForm from "./ProfileEditForm";
 import { observer } from 'mobx-react-lite';
 
 export default observer(function ProfileAbout() {
-    const { profileStore } = useStore();
-    const { isCurrentUser, profile } = profileStore;
+    const {profileStore} = useStore();
+    const {isCurrentUser, profile} = profileStore;
     const [editMode, setEditMode] = useState(false);
 
     return (
@@ -24,7 +24,7 @@ export default observer(function ProfileAbout() {
                     )}
                 </Grid.Column>
                 <Grid.Column width='16'>
-                    {editMode ? <ProfileEditForm setEditMode={setEditMode} /> : <span style={{ whiteSpace: 'pre-wrap' }}>{profile?.bio}</span>}
+                    {editMode ? <ProfileEditForm setEditMode={setEditMode} /> : <span style={{whiteSpace: 'pre-wrap'}}>{profile?.bio}</span>}
 
                 </Grid.Column>
             </Grid>

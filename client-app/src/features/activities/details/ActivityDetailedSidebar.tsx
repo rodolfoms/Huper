@@ -20,7 +20,7 @@ export default observer(function ActivityDetailedSidebar({ activity: { attendees
                 inverted
                 color='teal'
             >
-                {attendees.length} {attendees.length === 1 ? 'Person' : 'People'} join
+                {attendees.length} {attendees.length === 1 ? 'Person' : 'People'} going
             </Segment>
             <Segment attached>
                 <List relaxed divided>
@@ -40,10 +40,11 @@ export default observer(function ActivityDetailedSidebar({ activity: { attendees
                                     <Link to={`/profiles/${attendee.username}`}>{attendee.displayName}</Link>
                                 </Item.Header>
                                 {attendee.following &&
-                                    <Item.Extra style={{ color: 'orange' }}>Following</Item.Extra>}
+                                <Item.Extra style={{ color: 'orange' }}>Following</Item.Extra>}
                             </Item.Content>
                         </Item>
                     ))}
+
                 </List>
             </Segment>
         </>

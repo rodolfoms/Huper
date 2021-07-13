@@ -16,6 +16,7 @@ export default class ProfileStore {
 
     constructor() {
         makeAutoObservable(this);
+
         reaction(
             () => this.activeTab,
             activeTab => {
@@ -69,7 +70,7 @@ export default class ProfileStore {
                 }
                 this.uploading = false;
             })
-        } catch (error) {
+        } catch (error) {   
             console.log(error);
             runInAction(() => this.uploading = false);
         }
@@ -118,7 +119,7 @@ export default class ProfileStore {
                 if (profile.displayName && profile.displayName !== store.userStore.user?.displayName) {
                     store.userStore.setDisplayName(profile.displayName);
                 }
-                this.profile = { ...this.profile, ...profile as Profile };
+                this.profile = {...this.profile, ...profile as Profile};
                 this.loading = false;
             })
         } catch (error) {
@@ -182,4 +183,5 @@ export default class ProfileStore {
             })
         }
     }
+
 }

@@ -36,11 +36,11 @@ namespace Application.Activities
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var item = await _context.Activities.FindAsync(request.Activity.Id);
+                var activity = await _context.Activities.FindAsync(request.Activity.Id);
 
-                if (item == null) return null;
+                if (activity == null) return null;
 
-                _mapper.Map(request.Activity, item);
+                _mapper.Map(request.Activity, activity);
 
                 var result = await _context.SaveChangesAsync() > 0;
 

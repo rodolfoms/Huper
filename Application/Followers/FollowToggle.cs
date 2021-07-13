@@ -23,16 +23,16 @@ namespace Application.Followers
 
             public Handler(DataContext context, IUserAccessor userAccessor)
             {
-                _userAccessor = userAccessor;
+                _userAccessor = userAccessor; 
                 _context = context;
             }
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var observer = await _context.Users.FirstOrDefaultAsync(x =>
+                var observer = await _context.Users.FirstOrDefaultAsync(x => 
                     x.UserName == _userAccessor.GetUsername());
 
-                var target = await _context.Users.FirstOrDefaultAsync(x =>
+                var target = await _context.Users.FirstOrDefaultAsync(x => 
                     x.UserName == request.TargetUsername);
 
                 if (target == null) return null;
