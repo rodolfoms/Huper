@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210204062409_RefreshTokens")]
-    partial class RefreshTokens
+    [Migration("20210713142043_inicialMigration")]
+    partial class inicialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
